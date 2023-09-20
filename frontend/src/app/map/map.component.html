@@ -1,0 +1,21 @@
+
+<div class="map-wrap" (click)="closeSidebar()">
+	<a href="https://http.cat/418" class="watermark" target="_blank"><img src="https://http.cat/418" alt="el gato" /></a>
+	<div class="map" #map></div>
+</div>
+<div class="container">
+	<div class="sidebar" *ngIf="showSidebar">
+
+    <app-sidebar
+      [selectedPowerplant]="selectedPowerplant"
+      (edit)="onEditPowerplant($event)"
+      (incidentOccurred)="onIncidentOccurred($event)"
+      (updatedPowerplant)="updatePowerplantMarker($event)"
+      (deletedPowerplant)="removePowerplantMarker($event)"></app-sidebar>
+
+  </div>
+  <app-edit-dialog-component *ngIf="showEditForm" [selectedPowerplant]="selectedPowerplant ? selectedPowerplant : null" (cancel)="onCancelEdit()" (saveEvent)="onSaveEdit($event)"></app-edit-dialog-component>
+	<div class="map-container">
+		<div #map class="map" (click)="closeSidebar()"></div>
+	</div>
+</div>

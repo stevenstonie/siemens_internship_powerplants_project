@@ -1,0 +1,110 @@
+
+  <div *ngIf="selectedPowerplant">
+    <nav mat-tab-nav-bar class="vertical-tabs">
+      <a mat-tab-link [active]="selectedTab === 'details'" (click)="selectedTab = 'details'">
+        <mat-icon>home</mat-icon>
+      </a>
+      <a mat-tab-link [active]="selectedTab === 'NEWpowerplant'" (click)="selectedTab = 'NEWpowerplant'; editMode = true">
+        <mat-icon>add_location</mat-icon>
+      </a>
+
+      <a mat-tab-link [active]="selectedTab === 'producedData'" (click)="selectedTab = 'producedData'">
+        <mat-icon>bar_chart</mat-icon>
+      </a>
+
+      <a mat-tab-link [active]="selectedTab === 'incidents'" (click)="selectedTab = 'incidents'">
+        <mat-icon>bug_report</mat-icon>
+      </a>
+    </nav>
+
+    <div [ngSwitch]="selectedTab">
+
+      <ng-container *ngSwitchCase="'details'">
+        <!-- Details Tab content -->
+        <mat-card class="info-card">
+          <mat-card-content>
+            <div><strong>ID:</strong> {{selectedPowerplant.id}}</div>
+            <strong>Name:</strong> {{selectedPowerplant.name}}<br>
+            <div><strong>Country:</strong> {{selectedPowerplant.country_long}}</div>
+            <div><strong>Special id:</strong> {{selectedPowerplant.gppd_idnr}}</div>
+            <div><strong>Fuel:</strong> {{selectedPowerplant.primary_fuel}}</div>
+            <div><strong>Capacity(mw):</strong> {{selectedPowerplant.capacity_mw}}</div>
+            <div><strong>Long:</strong> {{selectedPowerplant.longitude}}</div>
+            <div><strong>Lat:</strong> {{selectedPowerplant.latitude}}</div>
+            <mat-card-actions class="edit-button-container">
+              <button mat-button color="primary" (click)="editPowerplant()">Edit</button>
+              <button mat-button color="warn" (click)="deletePowerplant()">Delete</button>
+
+            </mat-card-actions>
+          </mat-card-content>
+        </mat-card>
+      </ng-container>
+
+      <ng-container *ngSwitchCase="'NEWpowerplant'">
+        <!-- Powerplant Tab content -->
+        <div *ngIf="editMode">
+          <form #editForm="ngForm">
+            <strong>currently editing the powerplant with the id: {{selectedPowerplant!.id || 'New'}}</strong><br>
+            <mat-card class="info-card">
+              <mat-card-content>
+                <strong>ID:</strong>
+                <input [(ngModel)]="selectedPowerplant!.id" name="id" required><br>
+                <strong>Country:</strong>
+                <input [(ngModel)]="selectedPowerplant!.country" name="country" required><br>
+                <strong>Country Long:</strong>
+                <input [(ngModel)]="selectedPowerplant!.country_long" name="country_long" required><br>
+                <strong>Name:</strong>
+                <input [(ngModel)]="selectedPowerplant!.name" name="name" required><br>
+                <strong>GPPD IDNR:</strong>
+                <input [(ngModel)]="selectedPowerplant!.gppd_idnr" name="gppd_idnr" required><br>
+                <strong>Primary Fuel:</strong>
+                <input [(ngModel)]="selectedPowerplant!.primary_fuel" name="primary_fuel" required><br>
+                <strong>Capacity(MW):</strong>
+                <input [(ngModel)]="selectedPowerplant!.capacity_mw" name="capacity_mw" required><br>
+                <strong>Longitude:</strong>
+                <input [(ngModel)]="selectedPowerplant!.longitude" name="longitude" required><br>
+                <strong>Latitude:</strong>
+                <input [(ngModel)]="selectedPowerplant!.latitude" name="latitude" required><br>
+                <mat-card-actions class="edit-button-container">
+                  <button mat-button color="primary" (click)="savePowerplant()" [disabled]="!editForm.valid">Save</button>
+                  <button mat-button color="warn" (click)="cancelEdit()">Cancel</button>
+                </mat-card-actions>
+              </mat-card-content>
+            </mat-card>
+          </form>
+        </div>
+      </ng-container>
+
+
+
+
+
+      <ng-container *ngSwitchCase="'producedData'">
+        <!-- Produced Data Tab content -->
+        <div>
+          <hr>
+          <strong>produced data:</strong>
+          <div class="stacked-data">(under development...)</div>
+          <!--do the same as the data from the incidents above-->
+        </div>
+      </ng-container>
+
+      <ng-container *ngSwitchCase="'incidents'">
+        <!-- Incidents Tab content -->
+        <div>
+          <hr>
+          <strong>incidents:</strong>
+          <div class="stacked-data">
+            <div *ngFor="let incident of incidentsDataForCurrentPowerPlant">
+              <strong>Timestamp:</strong> {{incident.timestamp}}<br>
+              <strong>Description:</strong> {{incident.description}}<br>
+              <strong>Severity:</strong> {{incident.severity}}<br>
+              <strong>Status:</strong> {{incident.status}}<br>
+              <hr>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+
+    </div>
+  </div>

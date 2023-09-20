@@ -1,0 +1,40 @@
+.edit-dialog-title {
+  color: #333;
+  font-size: 24px;
+  text-align: center;
+  margin-top: 15px;
+}
+
+
+.edit-dialog-content {
+  background-color: #f0f0f0;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.edit-form-field {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.edit-input {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 10px;
+  width: 100%;
+}
+
+.edit-button {
+  background-color: #2b7abc;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 4px;
+}
+
+.edit-button:disabled {
+  background-color: #ccc;
+  color: #666;
+}

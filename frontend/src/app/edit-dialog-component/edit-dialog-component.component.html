@@ -1,0 +1,41 @@
+<h3 mat-dialog-title class="edit-dialog-title">Edit Powerplant</h3>
+
+<mat-dialog-content [formGroup]="editForm" class="edit-dialog-content">
+  <div fxLayout="row" fxLayoutAlign="start center">
+    <mat-form-field class="edit-form-field">
+      <input matInput placeholder="Name" formControlName="name" class="edit-input">
+    </mat-form-field>
+    <mat-form-field class="edit-form-field">
+      <input matInput placeholder="Country" formControlName="country_long" class="edit-input">
+    </mat-form-field>
+  </div>
+
+  <div fxLayout="row" fxLayoutAlign="start center">
+    <mat-form-field class="edit-form-field">
+      <input matInput placeholder="Country Abbreviation" formControlName="country" class="edit-input">
+    </mat-form-field>
+    <mat-form-field class="edit-form-field">
+      <input matInput placeholder="Fuel" formControlName="primary_fuel" class="edit-input">
+    </mat-form-field>
+  </div>
+
+  <div fxLayout="row" fxLayoutAlign="start center">
+    <mat-form-field class="edit-form-field">
+      <input matInput placeholder="Capacity (MW)" formControlName="capacity_mw" class="edit-input">
+    </mat-form-field>
+    <mat-form-field class="edit-form-field">
+      <input matInput placeholder="Longitude" formControlName="longitude" class="edit-input">
+    </mat-form-field>
+  </div>
+
+  <div fxLayout="row" fxLayoutAlign="start center">
+    <mat-form-field class="edit-form-field">
+      <input matInput placeholder="Latitude" formControlName="latitude" class="edit-input">
+    </mat-form-field>
+  </div>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  <button mat-button (click)="cancel()" class="edit-button">Cancel</button>
+  <button mat-button (click)="saveFromEditForm()" [disabled]="editForm.invalid" class="edit-button">Save</button>
+</mat-dialog-actions>

@@ -1,0 +1,110 @@
+/*sidebar.component.scss*/
+
+:host {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 20%;
+  background-color: rgba(82, 160, 224, 0.7);
+  box-shadow: 0px 0px 10px rgba(10, 17, 91, 0.81);
+  z-index: 1;
+  align-items: center; /* Center vertically */
+  justify-content: center; /* Center horizontally */
+
+
+}
+
+hr{
+  visibility: hidden;
+}
+.vertical-tabs a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 25px;
+  margin-bottom: 60px;
+  color: rgba(82, 160, 224, 0.7);
+}
+.vertical-tabs a.mat-tab-link {
+  background-color: saddlebrown;
+}
+
+.vertical-tabs a.mat-tab-link.active {
+  background-color: rgb(193, 18, 18); /* Adjust the background color of the active tab */
+}
+
+
+.info-card {
+  background-color: black;
+  color: white;
+  margin-top: 50px;
+  margin-left: 50px;
+  margin-right: 50px;
+  width: 65%; /* Make the mat-card fill the sidebar width */
+  height: auto; /* Remove fixed height */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Add space between card content */
+  padding: 20px; /* Add padding to create margins */
+  box-sizing: border-box; /* Include padding in the width and height */
+}
+
+.info-card2{
+  padding: 0px;
+  background-color: black;
+  color: white;
+  width: 65%; /* Make the mat-card fill the sidebar width */
+  height: auto; /* Remove fixed height */
+  margin-top: 50px;
+  margin-left: 50px;
+  margin-right: 50px;
+
+}
+
+.edit-button-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+  margin-right: 5px;
+  margin-left: 10px;
+}
+.edit-button-container button {
+  font-size: 16px;
+  padding: 10px 20px;
+  border-radius: 4px;
+  background-color: #2b7abc;
+  color: white;
+  margin-right: 10px;
+}
+.mat-snack-bar-container {
+  opacity: 0.1;
+}
+.cdk-overlay-container {
+  z-index: 9999;
+}
+
+.stacked-data {
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  white-space: pre-wrap;
+}
+
+.mat-toolbar-row {
+  flex-direction: column;
+}
+.mat-card {
+  margin: 20px 0;
+}
+.mat-form-field {
+  width: 100%;
+}
+
+.mat-mdc-tab-links {
+  display: flex;
+  flex-direction: row-reverse !important;
+
+}
+
+
